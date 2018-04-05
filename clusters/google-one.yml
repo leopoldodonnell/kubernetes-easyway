@@ -1,0 +1,17 @@
+
+kind: gcloud
+apiVersion: v1alpha1
+metadata:
+  name: google-one
+region: us-central1
+backend:
+  kind: gcs
+  config:
+    bucket: leo-odonnell-terraform-admin
+    prefix: /kubernetes
+    credentials: ~/.config/gcloud/terraform-admin.json
+provider:
+  project: clusters-199218
+  credentials: ~/.config/gcloud/terraform-admin.json
+kubernetes:
+  version: 1.8.8
