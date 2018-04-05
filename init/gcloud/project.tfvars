@@ -1,0 +1,5 @@
+project_name = "kubernetes-clusters"
+org_id = "996450850722"
+billing_account = "01B0AD-07C960-7D93DE"
+ADMIN = "leo-odonnell-terraform-admin"
+credentials = "~/.config/gcloud/terraform-admin.json"
