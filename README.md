@@ -15,3 +15,43 @@ While there are many reasons you may want to install Kubernetes the hard way, it
 
 ## Design
 
+## Cluster YML
+
+* kind
+* apiVersion
+* metadata
+* region
+* backend
+* provider
+* kubernetes
+
+### metadata
+
+### backend
+
+### provider
+
+### kubernetes
+
+## NOTES
+
+- need to add a volume for /mthome/.azure for access locally, not just in the az command
+- the tutorial works to create a cluster: https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster
+- need to use the following to get the kubernetes config
+
+```bash
+az aks get-credentials --resource-group=myResourceGroup --name=myAKSCluster -f - > kubeconfig
+```
+
+Use it
+
+```bash
+export KUBECONFIG=$PWD/kubeconfig kubectl get nodes
+```
+
+Access the dashboard at http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/#!/overview?namespace=default
+
+```bash
+# Don't run this from inside multi-tool since localhost won't be the same as what your browser is using
+export KUBECONFIG=$PWD/kubeconfig kubectl proxy
+```
