@@ -55,3 +55,25 @@ Access the dashboard at http://localhost:8001/api/v1/namespaces/kube-system/serv
 # Don't run this from inside multi-tool since localhost won't be the same as what your browser is using
 export KUBECONFIG=$PWD/kubeconfig kubectl proxy
 ```
+
+** Google KUBECONFIG **
+
+To setup KUBECONFIG for google you need to make the cluster project current
+
+```bash
+multi-tool gcloud config set project {cluster project id}
+```
+
+Then you can setup the config file using
+```bash
+multi-tool gcloud container clusters get-credentials {CLUSTER NAME} --zone={PRIMARY ZONE}
+```
+
+Set `KUBECONFIG` if you want to use a file other than `~/.kube/config` for the credentials
+
+Both `CLUSTER_NAME` and `PRIMARY_ZONE` can be retrieved as follows:
+```bash
+cd clusters/{cluster dir}
+multi-tool terraform output cluster_name
+multi-tool terraform output primary_zone
+```
